@@ -17,7 +17,9 @@ Unity v2022.3.59
 ---
 
 ## Purpose
-The VertexPaint tool is designed to allow easy painting of vertex colors onto surfaces within Unity.
+The VertexPaint tool is designed to allow easy painting of vertex colors onto surfaces within Unity. It can be used to quickly paint lighting into the scene, like this:
+
+![Tool Screenshot](media/demo1.gif)
 
 ## Features
 - Paint or erase vertex colors directly onto meshes using a Photoshop-like brush tool.
@@ -32,6 +34,9 @@ To set up your Unity package, follow these steps:
 - Import the package into your Unity project.
 
 ## Simple How-to-Use
+
+![Tool Screenshot](media/image1.png)
+
 1. Take a standard mesh GameObject (i.e., one with a `MeshFilter` and `MeshRenderer` component).
 2. If it doesn't already have one, add a `VertexPaintable` component and a `MeshCollider` component.
 3. Assign a material to the object with a shader that uses the `_VertexColorArray` property.
