@@ -29,13 +29,14 @@ The VertexPaint tool is designed to allow easy painting of vertex colors onto su
 - Preserves vertex color assignments even on mesh re-export.
 
 ## Installation
-To set up your Unity package, follow these steps:
-- Download the Unity package from the [Releases section](#).
+- Download the Unity package (VertexPaintTool.unitypackage).
 - Import the package into your Unity project.
 
 ## Simple How-to-Use
 
 ![Tool Screenshot](media/image1.png)
+
+The easiest way to get started is to open the provided sample scene (Scenes/VertexPaintTestScene). Once you open the Vertex Brush window there, all you need to do is assign the VertexPaintLayer, and you will be ready to paint. However, if you are starting from scratch in a new scene, use the following steps.
 
 1. Take a standard mesh GameObject (i.e., one with a `MeshFilter` and `MeshRenderer` component).
 2. If it doesn't already have one, add a `VertexPaintable` component and a `MeshCollider` component.
