@@ -7,26 +7,27 @@ A vertex's stored position is its *local position relative to the mesh origin*, 
 
 If desired, you can enable VertexPaintableAutoAttach, which automatically adds VertexPaintable to every new mesh object placed in scene.
 
-* Methods
-	* SetRawVertexColor(Vector3 position, Color color)
-		* Takes a vertex position, converts it to its canonical integer position, and updates the color map with that value.
-		* This is the main way that clients should interact with the VertexPaintable.
-		* This does not apply the vertex colors, so you will not see any visual updates just by calling this method alone.
-	* GetRawVertexColor(Vector3Int canonicalPos)
-	* GetRawVertexColor(Vector3 position
-		* Returns the color stored in the color map for the vertex position, or the empty color (0,0,0,0) if it does not exist.
-		* Remember that this is not necessarily the same as the color that will be set on the MaterialPropertyBlock.
-	* ApplyVertexColors()
-		* Uses the stored color map to construct a Vector4[] of colors indexed by vertex, and injects it via a MaterialPropertyBlock.
-		* The array has a fixed size of 1023, the maximum array size Unity allows. Vertices with an index higher than this will be ignored. Sorry! :(
-		* This function essentially "commits" your changes to the object, so you should see visual changes after calling it.
-		* ApplyVertexColors is called automatically in OnEnable() (for game runtime) and OnValidate() (for editor use).
-	* SetDefaultColor(Color color)
-		* Sets the default color for this object. The final color for a given vertex will blend between the default color and the GetRawVertexColor() for that vertex, based on the alpha of the GetRawVertexColor().
-		* Generally, you will want default colors to be consistent across groups. The VertexPaintLayer allows you to set the default color for every VertexPaintable it contains at once, which makes this easy.
-		
-* Inspector options
-	* Refresh: Reapplies vertex colors and resets the MeshCollider component (by removing and re-adding it). Refresh is useful if a mesh has been re-imported, and attempts to handle the common points of breakage from reimport.
-	* Clear vertex colors: 
-	* Reapply vertex colors:
-	* Toggle vertex output
+## Methods
+- public void SetRawVertexColor(Vector3 position, Color color)
+	- Takes a vertex position, converts it to its canonical integer position, and updates the color map with that value.
+	- This is the main way that clients should interact with the VertexPaintable.
+	- This does not apply the vertex colors, so you will not see any visual updates just by calling this method alone.
+   
+- public Color GetRawVertexColor(Vector3Int canonicalPos)
+- public Color GetRawVertexColor(Vector3 position
+	- Returns the color stored in the color map for the vertex position, or the empty color (0,0,0,0) if it does not exist.
+	- Remember that this is not necessarily the same as the color that will be set on the MaterialPropertyBlock.
+- public void ApplyVertexColors()
+	- Uses the stored color map to construct a Vector4[] of colors indexed by vertex, and injects it via a MaterialPropertyBlock.
+	- The array has a fixed size of 1023, the maximum array size Unity allows. Vertices with an index higher than this will be ignored. Sorry! :(
+	- This function essentially "commits" your changes to the object, so you should see visual changes after calling it.
+	- ApplyVertexColors is called automatically in OnEnable() (for game runtime) and OnValidate() (for editor use).
+- public void SetDefaultColor(Color color)
+	- Sets the default color for this object. The final color for a given vertex will blend between the default color and the GetRawVertexColor() for that vertex, based on the alpha of the GetRawVertexColor().
+	- Generally, you will want default colors to be consistent across groups. The VertexPaintLayer allows you to set the default color for every VertexPaintable it contains at once, which makes this easy.
+
+## Inspector options
+- Refresh: Reapplies vertex colors and resets the MeshCollider component (by removing and re-adding it). Refresh is useful if a mesh has been re-imported, and attempts to handle the common points of breakage from reimport.
+- Clear vertex colors: 
+- Reapply vertex colors:
+- Toggle vertex output
