@@ -50,7 +50,7 @@ The easiest way to get started is to open the provided sample scene (Scenes/Vert
 8. Have fun!
 
 ## Documentation
-[Read the full documentation here.](Documentation.md)
+[Read the full documentation here.](docs/Main.md)
 
 ## Limitations
 - **Mesh Size Limitations:** Meshes with more than 1024 vertices are not well supported. This is because arrays assigned in a `MaterialPropertyBlock` have a limit of 1024 entries. This restriction was considered acceptable for the original use case of modular sets in a low-poly retro style, but it would quickly become overly restrictive for conventional styles.
