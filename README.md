@@ -17,7 +17,9 @@ Unity v2022.3.59
 ---
 
 ## Purpose
-The VertexPaint tool is designed to allow easy painting of vertex colors onto surfaces within Unity.
+The VertexPaint tool is designed to allow easy painting of vertex colors onto surfaces within Unity. It can be used to quickly paint lighting into the scene, like this:
+
+![Tool Screenshot](media/demo1.gif)
 
 ## Features
 - Paint or erase vertex colors directly onto meshes using a Photoshop-like brush tool.
@@ -27,11 +29,15 @@ The VertexPaint tool is designed to allow easy painting of vertex colors onto su
 - Preserves vertex color assignments even on mesh re-export.
 
 ## Installation
-To set up your Unity package, follow these steps:
-- Download the Unity package from the [Releases section](#).
+- Download the Unity package (VertexPaintTool.unitypackage).
 - Import the package into your Unity project.
 
 ## Simple How-to-Use
+
+![Tool Screenshot](media/image1.png)
+
+The easiest way to get started is to open the provided sample scene (Scenes/VertexPaintTestScene). Once you open the Vertex Brush window there, all you need to do is assign the VertexPaintLayer, and you will be ready to paint. However, if you are starting from scratch in a new scene, use the following steps.
+
 1. Take a standard mesh GameObject (i.e., one with a `MeshFilter` and `MeshRenderer` component).
 2. If it doesn't already have one, add a `VertexPaintable` component and a `MeshCollider` component.
 3. Assign a material to the object with a shader that uses the `_VertexColorArray` property.
@@ -68,8 +74,12 @@ Detailed documentation (hopefully) coming soon.
 - The tool works by mapping colors to local positions, so it correctly handles retopologizing, changing of vertex indices, etc. New geometry won't have paint data, but existing colors won't be affected if you add new geometry.
 - Changing the object's pivot or vertex positions will break the vertex colors irrevocably.
 
-### Q: Brush strokes are lagging my computer.
+### Q: Brush strokes are getting laggy.
 **A:** You may need to have more granular paint layers. The more vertices in a paint layer, the more taxing the tool becomes. As a rough heuristic, a single medium-to-large size room probably merits its own paint layer. Apologies for the performance hit — but the tool remains snappy with good layer organization.
 
 ### Q: It's too hard to paint precisely.
-**A:** Try toggling **"Selected only"** in the Brush Window settings. This option causes only the currently selected object to receive brush strokes.
+**A:** There are several things that can help.
+- Try toggling **"Selected only"** in the Brush Window settings. This option causes only the currently selected object to receive brush strokes.
+- You can also try reconfiguring your layer organization - the brush only affects objects in the assigned layer, so this can help ensure that you don't accidentally paint unwanted objects.
+- Hold CTRL while painting to ignore occluded vertices. This will ensure that you won't accidentally paint the back side of a mesh.
+- Lastly, remember that although the effects are seen on mesh *faces*, what you are painting is mesh *vertices*. The brush must be over a vertex to affect have any effect on it. Enabling wireframe view is recommended so you can easily see vert positions.
