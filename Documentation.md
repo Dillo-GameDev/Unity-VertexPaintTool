@@ -1,5 +1,3 @@
-VERTEX PAINT DOCUMENTATION
-
 ## Introduction
 This tool was written to address my own specific needs in development. Thus, there are many limitations that the typical user will probably find too restrictive. I hope that you find it valuable nonetheless, but in its current state, it will likely be more useful as a foundation for your own tools, rather than a plug-and-play solution. So I will try to explain the main points of its implementation clearly, so that you can easily re-fit them to your own needs. :)
 
@@ -8,15 +6,13 @@ Vertex colors are a powerful tool commonly used as a lighting hack in retro PSX-
 
 I used vertex colors in the context of implementing PSX-style lighting. However, there are many possible applications for vertex colors, so you may find it useful for other things as well.
 
-##How it works: High level
+## How it works: High level
 At its core, what this tool does is:
-	* Save a mapping of canonical vertex positions to colors in a component
-	* Transforms that mapping into an array of colors indexed by vertex
-	* Assigns the color array to a MaterialPropertyBlock, which can be accessed by the shader.
+- Save a mapping of canonical vertex positions to colors in a component
+- Transforms that mapping into an array of colors indexed by vertex
+- Assigns the color array to a MaterialPropertyBlock, which can be accessed by the shader.
 
-##Class API
-
-##VertexPaintable
+## VertexPaintable
 VertexPaintable is a component that must be assigned to every mesh object you intend to paint. It stores the color map for the object's mesh vertices as a dictionary. This is automatically serialized via the ISerializationCallbackReceiver interface, which simply converts the dictionary to and from a list of Key-Value pairs. It also stores a default color for mesh vertices that have not been painted.
 
 The stored ("raw") color in the VertexPaintable map is not necessarily the final color that will be used for vertex colors. The final color is determined by interpolating between the raw color and the "default" color, based on the raw color's alpha. Also, the final color's alpha will always be 1. Thus, with a default color of black and a raw color of (1,1,1,0.5), the final color will be grey. If the raw color's alpha is 1, then the raw color will be used completely for the final color. Think of it like having two Photoshop layers, with the raw color "layer" on top of the default color "layer".
@@ -104,13 +100,13 @@ I won't go over every piece of UI boilerplate in here, but I do want to cover th
 
 ## VertexPaintOperation
 VertexPaintOperations are data bricks for instructions that are executed during a single call of VertexBrushWindow.Paint(). They store
-	* A VertexPaintable to affect
-	* A Vector3 position, which is the vertex that will be painted
-	* A weight, which will combine with the brush color and opacity to determine the resultant color.
+- A VertexPaintable to affect
+- A Vector3 position, which is the vertex that will be painted
+- A weight, which will combine with the brush color and opacity to determine the resultant color.
 
 The only functions that care about VertexPaintOperations are
-	* VertexBrushWindow.Paint()
-	* VertexBrushWindow.GetAffectedVertices()
-	* VertexBrushWindow.PaintOver()
-	* VertexBrushWindow.Erase()
+- VertexBrushWindow.Paint()
+- VertexBrushWindow.GetAffectedVertices()
+- VertexBrushWindow.PaintOver()
+- VertexBrushWindow.Erase()
 These functions know what to do with the data contained within a VertexPaintOperation.

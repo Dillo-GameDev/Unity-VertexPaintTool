@@ -9,7 +9,7 @@ Unity v2022.3.59
 1. [Purpose](#purpose)
 2. [Features](#features)
 3. [Installation](#installation)
-4. [Simple How-to-Use](#simple-how-to-use)
+4. [Getting started](#getting-started)
 5. [Documentation](#documentation)
 6. [Limitations](#limitations)
 7. [Troubleshooting](#troubleshooting)
@@ -32,7 +32,7 @@ The VertexPaint tool is designed to allow easy painting of vertex colors onto su
 - Download the Unity package (VertexPaintTool.unitypackage).
 - Import the package into your Unity project.
 
-## Simple How-to-Use
+## Getting started
 
 ![Tool Screenshot](media/image1.png)
 
@@ -50,7 +50,7 @@ The easiest way to get started is to open the provided sample scene (Scenes/Vert
 8. Have fun!
 
 ## Documentation
-Detailed documentation (hopefully) coming soon.
+[Read the full documentation here.](Documentation.md)
 
 ## Limitations
 - **Mesh Size Limitations:** Meshes with more than 1024 vertices are not well supported. This is because arrays assigned in a `MaterialPropertyBlock` have a limit of 1024 entries. This restriction was considered acceptable for the original use case of modular sets in a low-poly retro style, but it would quickly become overly restrictive for conventional styles.
