@@ -13,6 +13,6 @@ At its core, what this tool does is:
 - Assigns the color array to a MaterialPropertyBlock, which can be accessed by the shader.
 
 ## Classes
-- [VertexPaintable component](docs/VertexPaintable.md)
-- [VertexPaintLayer component](docs/VertexPaintLayer.md)
-- [VertexBrushWindow editor window](docs/VertexBrushWindow.md)
+- [VertexPaintable component](VertexPaintable.md)
+- [VertexPaintLayer component](VertexPaintLayer.md)
+- [VertexBrushWindow editor window](VertexBrushWindow.md)
