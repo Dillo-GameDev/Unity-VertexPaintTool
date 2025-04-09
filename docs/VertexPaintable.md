@@ -13,15 +13,16 @@ If desired, you can enable VertexPaintableAutoAttach, which automatically adds V
 	- This is the main way that clients should interact with the VertexPaintable.
 	- This does not apply the vertex colors, so you will not see any visual updates just by calling this method alone.
    
-- public Color GetRawVertexColor(Vector3Int canonicalPos)
-- public Color GetRawVertexColor(Vector3 position
+- public Color GetRawVertexColor(Vector3 position)
 	- Returns the color stored in the color map for the vertex position, or the empty color (0,0,0,0) if it does not exist.
 	- Remember that this is not necessarily the same as the color that will be set on the MaterialPropertyBlock.
+   
 - public void ApplyVertexColors()
 	- Uses the stored color map to construct a Vector4[] of colors indexed by vertex, and injects it via a MaterialPropertyBlock.
 	- The array has a fixed size of 1023, the maximum array size Unity allows. Vertices with an index higher than this will be ignored. Sorry! :(
 	- This function essentially "commits" your changes to the object, so you should see visual changes after calling it.
 	- ApplyVertexColors is called automatically in OnEnable() (for game runtime) and OnValidate() (for editor use).
+   
 - public void SetDefaultColor(Color color)
 	- Sets the default color for this object. The final color for a given vertex will blend between the default color and the GetRawVertexColor() for that vertex, based on the alpha of the GetRawVertexColor().
 	- Generally, you will want default colors to be consistent across groups. The VertexPaintLayer allows you to set the default color for every VertexPaintable it contains at once, which makes this easy.
