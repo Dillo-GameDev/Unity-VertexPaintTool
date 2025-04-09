@@ -5,11 +5,11 @@ The VertexPaint Layer tracks its contents in a cached list of LayerScopeItem, wh
 
 VertexPaintLayers are required in order to use the Vertex Brush, so they should be integrated into your workflow. Use them like you would any other hierarchical organization tool. You may choose to separate things into a new VertexPaintLayer if, for instance, the lighting conditions in a room suggest a different ambient color. You might also choose to separate them for ease of painting, as the Vertex Brush will never paint outside of the selected layer. In general, a good guideline would be one VertexPaintLayer for each enclosed room.
 
-VertexPaintLayers can also save palettes of colors. Check the Vertex Brush window documentation for more details.
+VertexPaintLayers can also save palettes of colors. Check the VertexBrushWindow documentation for more details.
 
-* Inspector options
-	* Set default color to ambient: Calls SetDefaultColor on all VertexPaintables in the layer, using the layer's ambient color.
-	* Clear default color: Clears the default color on all VertexPaintables in the layer.
-	* Refresh all: Reapplies vertex colors and resets the MeshCollider component on all VertexPaintables in the layer. This is useful if a reimport process has caused temporary breakage.
-	* Reapply vertex colors for all:
-	* Clear vertex colors for all:
+## Inspector options
+- Set default color to ambient: Calls SetDefaultColor on all VertexPaintables in the layer, using the layer's ambient color.
+- Clear default color: Clears the default color on all VertexPaintables in the layer.
+- Refresh all: Reapplies vertex colors and resets the MeshCollider component on all VertexPaintables in the layer. This is useful if a reimport process has caused temporary breakage.
+- Reapply vertex colors for all:
+- Clear vertex colors for all:
